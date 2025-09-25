@@ -1,0 +1,60 @@
+{% extends 'website_base.html' %}
+{% load static %}
+{% block title %}Contact Us - Ultoxy Technology{% endblock %}
+{% block content %}
+  
+
+  <style>
+   
+ 
+
+    .container-maintenance {
+      max-width: 1000px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .loader {
+      border: 6px solid rgba(255, 255, 255, 0.3);
+      border-top: 6px solid #fff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      margin: 20px auto;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+<br><br><br><br>
+<center>
+    <div class="container-maintenance">
+    <h1 class="text-warning">🚧 Page Under Maintenance</h1>
+    <p class="text-light">We’re working hard to bring you a better experience.<br>
+       Please check back soon.</p>
+    <div class="loader"></div>
+  </div>
+</center>
+{% endblock content %}
+  

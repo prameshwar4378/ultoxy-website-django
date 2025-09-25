@@ -49,3 +49,8 @@ def blog(request):
         "blogs": blogs,
     }
     return render(request, 'blogs.html', context)
+
+
+
+def blog_details(request): 
+    return render(request, 'blog_details.html')
