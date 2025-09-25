@@ -1,0 +1,946 @@
+
+{% extends 'website_base.html' %}
+{% load static %}
+{% block content %}
+
+ <style>
+    :root {
+      --primary: #00e1ff;
+      --secondary: #8b5cff;
+      --accent: #ff7ab6;
+      --highlight: #ffb86b;
+      --background: #0e0e0e;
+      --card-bg: rgba(24,28,37,0.52);
+      --card-blur: blur(18px);
+      --glass-border: rgba(255,255,255,0.15);
+      --border-radius: 26px;
+      --shadow: 0 8px 32px rgba(0, 225, 255, 0.10), 0 2px 6px 0px rgba(139,92,255,0.10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      background: linear-gradient(135deg, #1a2027 0%, #181c25 100%);
+      color: #eef2f6;
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+    .services-section {
+      padding: 80px 0 40px 0;
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    /* Animated Background Blobs */
+    .bg-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.35;
+      z-index: 0;
+      pointer-events: none;
+      animation: blobFloat 24s linear infinite alternate;
+    }
+    .bg-blob1 {
+      width: 390px; height: 390px;
+      left: -120px; top: 80px;
+      background: radial-gradient(circle at 40% 60%, var(--primary) 60%, transparent 100%);
+      animation-delay: 0s;
+    }
+    .bg-blob2 {
+      width: 330px; height: 330px;
+      right: -110px; top: 320px;
+      background: radial-gradient(circle at 60% 40%, var(--accent) 70%, transparent 100%);
+      animation-delay: 8s;
+    }
+    .bg-blob3 {
+      width: 260px; height: 260px;
+      left: 40vw; top: 650px;
+      background: radial-gradient(circle at 70% 30%, var(--highlight) 50%, transparent 100%);
+      animation-delay: 12s;
+    }
+    @keyframes blobFloat {
+      0% { transform: scale(1) translateY(0);}
+      50% { transform: scale(1.15) translateY(-30px);}
+      100% { transform: scale(1) translateY(0);}
+    }
+
+
+    
+    .section-header {
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--accent),
+    var(--secondary),
+    var(--highlight),
+    var(--primary)
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: gradientMove 6s linear infinite;
+  letter-spacing: 1.5px;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+/* Subtitle under heading */
+.section-subtitle {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: 0.4px;
+  animation: fadeInUp 1.2s ease forwards;
+  opacity: 0;
+}
+
+/* Gradient move animation */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+  .section-subtitle {
+    font-size: 1rem;
+    padding: 0 12px;
+  }
+}
+
+
+
+.service-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  border: 1.5px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 70px;
+  position: relative;
+  transition: transform 0.28s cubic-bezier(.77,0,.18,1.01), box-shadow 0.28s;
+  z-index: 1;
+
+  /* Glassmorphism core */
+  backdrop-filter: var(--card-blur);
+  -webkit-backdrop-filter: var(--card-blur);
+
+  /* Gradient overlay for depth */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  display: flex;
+  align-items: stretch;
+  min-height: 340px;
+}
+
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.03) rotateZ(-0.5deg);
+      box-shadow: 0 18px 60px 0px rgba(255,122,182,0.18), 0 12px 60px 0px rgba(0,225,255,0.13);
+      border-color: var(--primary);
+      background: linear-gradient(120deg, rgba(16,23,36,0.32), var(--card-bg) 80%);
+        /* Glassmorphism core */
+  backdrop-filter: var(--card-blur);
+  -webkit-backdrop-filter: var(--card-blur);
+
+  /* Gradient overlay for depth */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  display: flex;
+  align-items: stretch;
+  min-height: 340px;
+
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: -60%;
+      left: -70%;
+      width: 220%;
+      height: 220%;
+      background: linear-gradient(110deg, transparent 70%, rgba(255,255,255,0.13) 100%);
+      transform: rotateZ(15deg);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 2;
+      transition: opacity 0.4s;
+    }
+    .service-card:hover::before {
+      opacity: 1;
+      animation: shine 1.2s linear;
+    }
+    @keyframes shine {
+      0% { left: -70%; opacity: 1;}
+      90% { left: 80%; opacity: 1;}
+      100% { left: 80%; opacity: 0;}
+    }
+
+    /* Zigzag Layout */
+    .service-row {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 0;
+    }
+    .service-row.even {
+      flex-direction: row-reverse;
+    }
+    .service-img {
+      flex: 1 1 45%;
+      min-width: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 0 0 0;
+      z-index: 3;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-img img {
+      width: 98%;
+      max-width: 410px;
+      min-width: 220px;
+      aspect-ratio: 3/2;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 225, 255, 0.18);
+      transition: transform 0.6s cubic-bezier(.65,.05,.36,1), box-shadow 0.45s;
+      object-fit: cover;
+      filter: saturate(1.08) contrast(1.05) brightness(1.13) blur(1px);
+      border: 1.3px solid var(--secondary);
+      animation: floatAnim 3.6s ease-in-out infinite alternate;
+      will-change: transform, filter;
+      background: #191a23;
+    }
+    .service-card:hover .service-img img,
+    .service-img img:hover {
+      transform: scale(1.06) rotateZ(-1.7deg);
+      box-shadow: 0 18px 50px rgba(255,122,182,0.22), 0 12px 60px rgba(0,225,255,0.18);
+      filter: saturate(1.13) brightness(1.18) blur(0px);
+    }
+    @keyframes floatAnim {
+      0% {transform: translateY(0);}
+      100% {transform: translateY(-10px);}
+    }
+    .service-content {
+      flex: 1 1 55%;
+      min-width: 220px;
+      padding: 44px 38px 44px 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 3;
+    }
+    .service-content h2 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      background: linear-gradient(270deg, var(--primary), var(--secondary), var(--accent), var(--highlight), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 18px;
+      animation: gradientMove 5s linear infinite;
+      letter-spacing: 0.5px;
+      text-shadow: 0px 1.5px 7px rgba(0,225,255,0.04);
+    }
+    .service-content p {
+      font-size: 1.1rem;
+      color: #b8c0cc;
+      line-height: 1.72;
+      font-weight: 400;
+      margin-bottom: 20px;
+      letter-spacing: 0.01em;
+    }
+
+
+
+
+.service-list {
+  margin-top: 16px;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.service-list li {
+  display: inline-block;
+  padding: 10px 18px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  border-radius: 12px;
+  border: 1.5px solid transparent;
+  background: linear-gradient(#0f141a, #0f141a) padding-box,
+              linear-gradient(135deg, var(--accent-a), var(--accent-b), var(--accent-c)) border-box;
+  transition: all 0.3s ease;
+  min-width: 140px;
+  text-align: left;  /* 👈 ensures tech tags align left */
+  cursor: default;
+}
+
+/* Hover: glow + text gradient */
+.service-list li:hover {
+  color: transparent;
+  background: linear-gradient(#0f141a, #0f141a) padding-box,
+              linear-gradient(90deg, var(--accent-a), var(--accent-b), var(--accent-c), var(--accent-d)) border-box;
+  -webkit-background-clip: text, border-box;
+  background-clip: text, border-box;
+  font-weight: 600;
+  box-shadow: 0 0 14px rgba(0,225,255,0.25);
+  transform: translateY(-2px);
+}
+
+
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0,225,255,0.20);}
+      70% { box-shadow: 0 0 0 15px rgba(0,225,255,0);}
+      100% { box-shadow: 0 0 0 0 rgba(0,225,255,0);}
+    }
+    /* Responsive Fixes */
+    @media (max-width: 1200px) {
+      .services-section { padding: 60px 0 20px 0; }
+      .service-content { padding: 32px 16px 32px 16px;}
+    }
+    @media (max-width: 991px) {
+      .services-section { padding: 28px 0 14px 0;}
+      .service-row { flex-direction: column !important; }
+      .service-img, .service-content {
+        min-width: 1px;
+        text-align: center;
+        justify-content: center;
+        padding: 18px 5vw 10px 5vw;
+      }
+      .service-content { padding: 18px 5vw 18px 5vw;}
+      .service-img img { max-width: 94vw; }
+      .service-list {
+        grid-template-columns: 1fr;
+      }
+      .service-card { margin-bottom: 36px; }
+    }
+    @media (max-width: 600px) {
+      .services-section { padding: 14px 0 2px 0; } 
+      .service-content h2 { font-size: 1.22rem; }
+      .service-content { padding: 15px 3vw 15px 3vw;}
+      .service-img img { border-radius: 10px;}
+      .service-list li { font-size: 0.99rem;}
+    }
+
+
+
+
+
+
+
+
+    /* Why us section */
+        .why-choose-us-section {
+      position: relative;
+      z-index: 2;
+      overflow-x: clip;
+      padding: 100px 0 60px 0;
+    }
+    /* Animated glassy blobs */
+    .whyus-bgblob {
+      position: absolute;
+      z-index: 0;
+      pointer-events: none;
+      border-radius: 50%;
+      filter: blur(54px);
+      opacity: 0.21;
+      animation: whyusBlobFloat 19s ease-in-out infinite alternate;
+    }
+    .whyus-bgblob1 {
+      width: 260px; height: 180px;
+      left: -90px; top: 0px;
+      background: radial-gradient(circle at 60% 50%, #00e1ff 60%, transparent 100%);
+      animation-delay: 0s;
+    }
+    .whyus-bgblob2 {
+      width: 200px; height: 170px;
+      right: -90px; top: 200px;
+      background: radial-gradient(circle at 40% 70%, #ff7ab6 60%, transparent 100%);
+      animation-delay: 6s;
+    }
+    .whyus-bgblob3 {
+      width: 140px; height: 110px;
+      left: 70vw; top: 370px;
+      background: radial-gradient(circle at 70% 30%, #ffb86b 55%, transparent 100%);
+      animation-delay: 12s;
+    }
+    @keyframes whyusBlobFloat {
+      0% { transform: scale(1) translateY(0);}
+      50% { transform: scale(1.13) translateY(-18px);}
+      100% { transform: scale(1.04) translateY(0);}
+    }
+    .whyus-title {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      margin-bottom: 0;
+
+  background: linear-gradient(
+    90deg,
+    var(--primary),
+    var(--accent),
+    var(--secondary),
+    var(--highlight),
+    var(--primary)
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  animation: gradientMove 6s linear infinite;
+  letter-spacing: 1.5px;
+  margin-bottom: 18px;
+  position: relative;
+    }
+    .whyus-underline {
+      width: 130px;
+      height: 5px;
+      margin-top: 15px;
+      border-radius: 6px;
+      background: linear-gradient(90deg,#00e1ff,#8b5cff,#ff7ab6,#ffb86b,#00e1ff);
+      background-size: 200% auto;
+      animation: whyus-underline-flow 3.3s linear infinite;
+      box-shadow: 0 3px 16px rgba(0,225,255,0.11);
+    }
+    @keyframes whyus-underline-flow {
+      0% {background-position:0%;}
+      100% {background-position:200%;}
+    }
+    /* Creative glass cards */
+    .whyus-glass-card {
+      position: relative;
+      background: rgba(30, 37, 50, 0.44);
+      border-radius: 22px;
+      border: 1.5px solid rgba(255,255,255,0.10);
+      box-shadow: 0 8px 42px rgba(0,225,255,0.11), 0 2px 10px 0px rgba(139,92,255,0.08);
+      backdrop-filter: blur(14px) saturate(1.19);
+      -webkit-backdrop-filter: blur(14px) saturate(1.19);
+      padding: 54px 28px 38px 28px;
+      margin-bottom: 0;
+      min-height: 320px;
+      transition: box-shadow .3s cubic-bezier(.2,.9,.2,1), transform .28s cubic-bezier(.2,.9,.2,1);
+      overflow: visible;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 1;
+      will-change: transform, box-shadow;
+      /* Stylish border overlay */
+    }
+    .whyus-glass-card::before {
+      content: '';
+      position: absolute;
+      left: 22%;
+      top: -38px;
+      width: 120px;
+      height: 50px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.16), rgba(255,255,255,0));
+      filter: blur(8px);
+      opacity: 0.13;
+      pointer-events: none;
+      transform: rotate(-15deg);
+      z-index: 2;
+    }
+    .whyus-glass-card:hover, .whyus-glass-card:focus-within {
+      box-shadow: 0 16px 64px rgba(0,225,255,0.17), 0 2px 18px rgba(255,122,182,0.14);
+      border-color: #00e1ff;
+      transform: translateY(-7px) scale(1.027) rotateZ(-0.3deg);
+    }
+    .whyus-glass-card h3 {
+      margin-top: 20px;
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      background: linear-gradient(90deg, #00e1ff 30%, #8b5cff 70%, #ffb86b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+    .whyus-glass-card p {
+      font-size: 1.07rem;
+      color: #b8c0cc;
+      margin-bottom: 0;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    /* Icon style */
+    .whyus-icon {
+      width: 70px; height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      font-size: 2.6rem;
+      margin: 0 auto;
+      box-shadow: 0 2px 20px 0 rgba(0,225,255,0.10);
+      position: relative;
+      background: rgba(255,255,255,0.13);
+      animation: whyusIconPulse 2.7s infinite cubic-bezier(.61,.12,.47,1.15);
+      transition: background .22s, box-shadow .22s;
+    }
+    .icon-bg1 { background: linear-gradient(135deg, #00e1ff 70%, #8b5cff 100%);}
+    .icon-bg2 { background: linear-gradient(135deg, #8b5cff 30%, #ff7ab6 100%);}
+    .icon-bg3 { background: linear-gradient(135deg, #ffb86b 10%, #ff7ab6 100%);}
+    .icon-bg4 { background: linear-gradient(135deg, #00e1ff 10%, #ffb86b 100%);}
+    .whyus-glass-card:hover .whyus-icon {
+      box-shadow: 0 4px 32px #ff7ab6a1, 0 2px 22px #00e1ff65;
+      background: linear-gradient(105deg,#fff2,#00e1ff50);
+    }
+    .whyus-icon i {
+      color: #fff;
+      filter: drop-shadow(0 0 6px #00e1ff66);
+      transition: color .22s, filter .22s;
+    }
+    .whyus-glass-card:hover .whyus-icon i {
+      color: #ffb86b;
+      filter: drop-shadow(0 0 12px #ffb86b99);
+    }
+    @keyframes whyusIconPulse {
+      0%,100% { box-shadow: 0 2px 20px 0 rgba(0,225,255,0.08);}
+      50% { box-shadow: 0 6px 42px 0 #ff7ab666, 0 4px 30px #8b5cff66;}
+    }
+    /* 3D Tilt */
+    .tilt-on-hover {
+      perspective: 800px;
+    }
+    /* Responsive */
+    @media (max-width: 991px) {
+      .whyus-glass-card { min-height: 220px; padding: 28px 12px 20px 12px;}
+      .whyus-title { font-size: 1.5rem;}
+      .row.g-4 { gap: 2rem 0 !important; }
+    }
+    @media (max-width: 768px) {
+      .whyus-glass-card { min-height: 180px; }
+      .whyus-title { font-size: 1.2rem; }
+      .whyus-underline { width: 80px; height: 3px;}
+    }
+
+
+
+
+
+
+
+
+
+    /* Tech Stacks */
+
+    .technologies {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 60px;
+}
+.section-header {
+  position: relative;
+  z-index: 2;
+} 
+/* Marquee Row */
+.tech-marquee-cards-wrap {
+  width: 100%;
+  overflow-x: hidden;
+  margin-top: 25px;
+  background: rgba(24,28,37,0.22);
+}
+.tech-marquee-cards-track {
+  display: flex;
+  gap: 28px;
+  animation: techCardMarquee 25s linear infinite;
+  width: fit-content;
+}
+@keyframes techCardMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.tech-glass-card {
+  background: var(--glass);
+  border: 1.5px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,225,255,0.10);
+  backdrop-filter: var(--glass-blur);
+  padding: 25px 20px;
+  min-width: 140px;
+  min-height: 140px;
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all .25s ease-in-out;
+}
+.tech-glass-card:hover {
+  box-shadow: 0 16px 64px rgba(0,225,255,0.14);
+  border-color: #00e1ff;
+  transform: scale(1.05) rotateZ(-0.7deg);
+}
+.tech-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 14px;
+  background: linear-gradient(132deg, #232c34 68%, #191a23 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 20px 0 #00e1ff17;
+}
+.tech-glass-card:hover .tech-icon {
+  background: linear-gradient(132deg, #00e1ff 10%, #8b5cff 80%);
+  box-shadow: 0 4px 32px #ff7ab680;
+}
+.tech-icon i {
+  font-size: 2.2rem;
+  color: #fff;
+}
+.tech-glass-card:hover .tech-icon i {
+  color: #ffb86b;
+}
+.tech-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #c0c7d6;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .tech-glass-card { min-width: 120px; min-height: 120px; width: 150px; }
+  .tech-icon { width: 48px; height: 48px; }
+}
+@media (max-width: 768px) {
+  .tech-glass-card { min-width: 100px; min-height: 100px; width: 120px; padding: 16px; }
+  .tech-icon { width: 40px; height: 40px; }
+  .tech-icon i { font-size: 1.8rem; }
+  .tech-label { font-size: 0.85rem; }
+}
+@media (max-width: 500px) {
+  .tech-marquee-cards-track { gap: 14px; animation-duration: 12s; }
+  .tech-glass-card { min-width: 80px; min-height: 80px; width: 90px; border-radius: 12px; padding: 10px; }
+  .tech-icon { width: 32px; height: 32px; border-radius: 8px; }
+  .tech-icon i { font-size: 1.3rem; }
+  .tech-label { font-size: 0.65rem; }
+}
+
+ </style>
+</head>
+<body> 
+    <!-- Header -->
+    <header class="header" id="header">
+        <a href="#home" class="logo-container"> 
+        </a>
+        
+        <div class="menu-toggle" id="menuToggle"> 
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="section">
+        <div class="coverflow-wrapper">
+            <div class="info">
+                <h2 id="current-title">Mountain Landscape</h2>
+                <p id="current-description" style="font-family: 'poppins', Times, serif; font-weight: 300;">Majestic peaks covered in snow during golden hour</p>
+            </div>
+
+            <div class="coverflow-container" tabindex="0">
+                <div class="coverflow" id="coverflow">
+                    <div class="coverflow-item" data-index="0">
+                        <div class="cover image-loading">
+                            <img loading="lazy"  src="{% static 'img/web-service-hero.jpg' %}" alt="Mountain Landscape" loading="lazy">
+                        </div>
+                        <div class="reflection"></div>
+                    </div>
+                    <div class="coverflow-item" data-index="1">
+                        <div class="cover image-loading">
+                            <img loading="lazy"  src="{% static 'img/app-service-hero.jpg' %}" alt="Forest Path" loading="lazy">
+                        </div>
+                        <div class="reflection"></div>
+                    </div>
+                    <div class="coverflow-item" data-index="2">
+                        <div class="cover image-loading">
+                            <img loading="lazy"  src="{% static 'img/desktop-service-hero.jpg' %}" alt="Lake Reflection" loading="lazy">
+                        </div>
+                        <div class="reflection"></div>
+                    </div>
+                    <div class="coverflow-item" data-index="3">
+                        <div class="cover image-loading">
+                            <img loading="lazy"  src="{% static 'img/marketing-service-hero.jpg' %}" alt="Ocean Sunset" loading="lazy">
+                        </div>
+                        <div class="reflection"></div>
+                    </div>
+                    <div class="coverflow-item" data-index="4">
+                        <div class="cover image-loading">
+                            <img loading="lazy"  src="{% static 'img/seo-service-hero.jpg' %}" alt="Desert Dunes" loading="lazy">
+                        </div>
+                        <div class="reflection"></div>
+                    </div> 
+                </div>
+
+                <button class="nav-button prev" onclick="navigate(-1)">‹</button>
+                <button class="nav-button next" onclick="navigate(1)">›</button>
+
+                <div class="dots-container" id="dots"></div>
+                
+                <!-- Play/Pause Button -->
+                <button class="play-pause-button" id="playPauseBtn" onclick="toggleAutoplay()">
+                    <span class="play-icon">▶</span>
+                    <span class="pause-icon" style="display: none;">❚❚</span>
+                </button>
+            </div>
+        </div>
+    </section>
+   
+
+  <section class="services-section px-3">
+        <div class="section-header text-center">
+        <h1 class="section-title">Our Creative Services</h1>
+        <p class="section-subtitle">
+            Delivering cutting-edge technology solutions with creativity, scalability, and innovation at the core.
+        </p>
+        </div>
+
+
+    <!-- Website Development -->
+    <div class="service-card service-row reveal">
+      <div class="service-img">
+  <img loading="lazy"  src="{% static 'img/web-service.png' %}" loading="lazy" alt="Website Development">
+      </div>
+      <div class="service-content">
+        <h2>Website Development</h2>
+        <p>We build fast, secure, and scalable websites tailored to your business needs with stunning design and smooth user experience.</p>
+        <ul class="service-list">
+          <li>Static Websites</li>
+          <li>Dynamic Websites</li>
+          <li>E-commerce Solutions</li>
+          <li>CMS Development</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Mobile App Development -->
+    <div class="service-card service-row even reveal">
+      <div class="service-img">
+  <img loading="lazy"  src="{% static 'img/app-service.png' %}" loading="lazy" alt="Mobile App Development">
+      </div>
+      <div class="service-content">
+        <h2>Mobile App Development</h2>
+        <p>We create high-performance mobile apps with intuitive UI/UX that help businesses connect with customers seamlessly.</p>
+        <ul class="service-list">
+          <li>Android Development</li>
+          <li>iOS Development</li>
+          <li>Hybrid Apps</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Desktop Software Development -->
+    <div class="service-card service-row reveal">
+      <div class="service-img">
+  <img loading="lazy"  src="{% static 'img/desktop-service.png' %}" loading="lazy" alt="Desktop Software">
+      </div>
+      <div class="service-content">
+        <h2>Desktop Software Development</h2>
+        <p>We design custom software solutions that optimize operations and boost productivity for enterprises and SMBs.</p>
+        <ul class="service-list">
+          <li>ERP Systems</li>
+          <li>Business Tools</li>
+          <li>Custom Desktop Applications</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Digital Marketing -->
+    <div class="service-card service-row even reveal">
+      <div class="service-img">
+  <img loading="lazy"  src="{% static 'img/marketing-service.png' %}" loading="lazy" alt="Digital Marketing">
+      </div>
+      <div class="service-content">
+        <h2>Digital Marketing</h2>
+        <p>We drive business growth with data-driven strategies that maximize online presence and customer engagement.</p>
+        <ul class="service-list">
+          <li>Social Media Marketing</li>
+          <li>Google Ads</li>
+          <li>Email Marketing</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SEO Optimization -->
+    <div class="service-card service-row reveal">
+      <div class="service-img">
+  <img loading="lazy"  src="{% static 'img/seo-service.png' %}" loading="lazy" alt="SEO Optimization">
+      </div>
+      <div class="service-content">
+        <h2>SEO Optimization</h2>
+        <p>Our SEO strategies improve search engine rankings and ensure long-term visibility for your business.</p>
+        <ul class="service-list">
+          <li>On-Page SEO</li>
+          <li>Off-Page SEO</li>
+          <li>Technical SEO</li>
+          <li>SEO Audits</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+ 
+  <section class="why-choose-us-section py-5 position-relative">
+    <!-- Blobs -->
+    <div class="whyus-bgblob whyus-bgblob1"></div>
+    <div class="whyus-bgblob whyus-bgblob2"></div>
+    <div class="whyus-bgblob whyus-bgblob3"></div>
+
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="whyus-title">Why Choose <span class="gradient-text">Ultoxy</span>?</h2>
+        <div class="whyus-underline mx-auto"></div>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <!-- Card 1 -->
+        <div class="col-xl-3 col-md-6">
+          <div class="whyus-glass-card tilt-on-hover glass1" tabindex="0">
+            <div class="whyus-icon icon-bg1">
+              <i class="bi bi-people"></i>
+            </div>
+            <h3>Experienced Developers</h3>
+            <p>A passionate team with proven expertise.</p>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-xl-3 col-md-6">
+          <div class="whyus-glass-card tilt-on-hover glass2" tabindex="0">
+            <div class="whyus-icon icon-bg2">
+              <i class="bi bi-shield-lock"></i>
+            </div>
+            <h3>Scalable &amp; Secure</h3>
+            <p>Solutions built to grow with your business.</p>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-xl-3 col-md-6">
+          <div class="whyus-glass-card tilt-on-hover glass3" tabindex="0">
+            <div class="whyus-icon icon-bg3">
+              <i class="bi bi-graph-up-arrow"></i>
+            </div>
+            <h3>Result-Oriented</h3>
+            <p>Focused on achieving measurable outcomes.</p>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="col-xl-3 col-md-6">
+          <div class="whyus-glass-card tilt-on-hover glass4" tabindex="0">
+            <div class="whyus-icon icon-bg4">
+              <i class="bi bi-cash-coin"></i>
+            </div>
+            <h3>Affordable Pricing</h3>
+            <p>Premium quality at competitive rates.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
+
+
+
+
+  <section class="technologies py-5">
+  <div class="container"> 
+          <div class="text-center mb-5">
+        <h2 class="whyus-title">Technologies We Use</h2>
+      <p class="section-subtitle">
+        We work with modern tools and frameworks to build scalable, secure, and high-performing digital solutions.
+      </p>
+        <div class="whyus-underline mx-auto"></div>
+      </div>
+    <!-- Marquee Cards -->
+    <div class="tech-marquee-cards-wrap">
+      <div class="tech-marquee-cards-track py-4">
+        <!-- 1st set -->
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-html5-plain"></i></div><span class="tech-label">HTML5</span></div>
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-css3-plain"></i></div><span class="tech-label">CSS3</span></div>
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-javascript-plain"></i></div><span class="tech-label">JavaScript</span></div>
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-react-original"></i></div><span class="tech-label">React</span></div>
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-django-plain"></i></div><span class="tech-label">Django</span></div>
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-flutter-plain"></i></div><span class="tech-label">Flutter</span></div>
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-firebase-plain"></i></div><span class="tech-label">Firebase</span></div>
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-bootstrap-plain"></i></div><span class="tech-label">Bootstrap</span></div>
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-nodejs-plain"></i></div><span class="tech-label">Node.js</span></div>
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-mysql-plain"></i></div><span class="tech-label">MySQL</span></div>
+        <!-- 2nd set (for loop effect) -->
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-html5-plain"></i></div><span class="tech-label">HTML5</span></div>
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-css3-plain"></i></div><span class="tech-label">CSS3</span></div>
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-javascript-plain"></i></div><span class="tech-label">JavaScript</span></div>
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-react-original"></i></div><span class="tech-label">React</span></div>
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-django-plain"></i></div><span class="tech-label">Django</span></div>
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-flutter-plain"></i></div><span class="tech-label">Flutter</span></div>
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-firebase-plain"></i></div><span class="tech-label">Firebase</span></div>
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-bootstrap-plain"></i></div><span class="tech-label">Bootstrap</span></div>
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-nodejs-plain"></i></div><span class="tech-label">Node.js</span></div>
+        <div class="tech-glass-card"><div class="tech-icon"><i class="devicon-mysql-plain"></i></div><span class="tech-label">MySQL</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="cta-section">
+  <div class="cta-content">
+    <h2 class="cta-title">Let’s Transform Your Business!</h2>
+    <p class="cta-subtitle">Speak to our experts today and get a custom solution that accelerates growth. One call can change everything.</p>
+    <a href="tel:+7776824564" class="cta-button">Call Now</a>
+  </div>
+</section>
+
+
+    <!-- Scroll to top button -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <span>↑</span>
+    </div>
+ 
+{% endblock content %}

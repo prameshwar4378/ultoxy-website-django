@@ -1,0 +1,370 @@
+{% extends 'website_base.html' %}
+{% load static %}
+{% block title %}Contact Us - Ultoxy Technology{% endblock %}
+{% block content %}
+  
+ 
+    <style>
+    :root {
+      --text-main: #eef2f6;
+      --muted: #9aa1ad;
+      --accent-a: #00e1ff;
+      --accent-b: #8b5cff;
+      --accent-c: #ff7ab6;
+      --accent-d: #ffb86b;
+      --footer-bg: #0a0a0a;
+    }
+    body {
+      background: linear-gradient(135deg, var(--footer-bg) 0%, #191b23 100%);
+      color: var(--text-main);
+      font-family: "Poppins", sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      letter-spacing: 0.01em;
+      overflow-x: hidden;
+    }
+    /* Blurry Animated Background Shapes */
+    .blurry-bg-shapes {
+      position: fixed;
+      z-index: 0;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .blurry-shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(52px);
+      opacity: 0.54;
+      mix-blend-mode: lighten;
+      animation-timing-function: ease-in-out;
+      will-change: transform;
+    }
+    .blurry-shape.shape1 {
+      width: 320px; height: 300px;
+      background: linear-gradient(120deg, var(--accent-a) 60%, var(--accent-b) 100%);
+      top: 8%; left: -8%;
+      animation: move1 15s infinite alternate;
+    }
+    .blurry-shape.shape2 {
+      width: 260px; height: 260px;
+      background: linear-gradient(125deg, var(--accent-c) 60%, var(--accent-d) 100%);
+      top: 60%; left: 68%;
+      animation: move2 22s infinite alternate;
+    }
+    .blurry-shape.shape3 {
+      width: 220px; height: 210px;
+      background: linear-gradient(120deg, var(--accent-b) 40%, var(--accent-a) 100%);
+      top: 28%; left: 80%;
+      animation: move3 18s infinite alternate;
+    }
+    .blurry-shape.shape4 {
+      width: 170px; height: 170px;
+      background: linear-gradient(120deg, var(--accent-d) 30%, var(--accent-c) 100%);
+      top: 75%; left: 8%;
+      animation: move4 19s infinite alternate;
+      opacity: 0.47;
+    }
+    @keyframes move1 {
+      0% { transform: translateY(0) scale(1) rotate(0deg);}
+      100% { transform: translateY(-40px) scale(1.07) rotate(22deg);}
+    }
+    @keyframes move2 {
+      0% { transform: translate(0, 0) scale(1);}
+      100% { transform: translate(36px, -28px) scale(1.15);}
+    }
+    @keyframes move3 {
+      0% { transform: translate(0, 0) scale(1);}
+      100% { transform: translate(-32px, 44px) scale(0.96);}
+    }
+    @keyframes move4 {
+      0% { transform: translate(0,0) scale(1);}
+      100% { transform: translateY(-24px) scale(1.12);}
+    }
+    /* Animated Wavy Hero BG */
+ 
+    .contact-page-container {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      justify-content: flex-start;
+      padding-top: 0;
+    }
+    .contact-header {
+      margin-top: 70px;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .contact-header h1 {
+      font-size: 2.85rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, var(--accent-a), var(--accent-b), var(--accent-c), var(--accent-d));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+      letter-spacing: 0.01em;
+    }
+    .contact-header p {
+      font-size: 1.18rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 500;
+    }
+    .contact-main {
+      width: 100%;
+      max-width: 1250px;
+      margin: 0 auto;
+      display: flex;
+      gap: 46px;
+      align-items: flex-start;
+      justify-content: center;
+      background: rgba(15, 39, 61, 0.97);
+      border-radius: 2.5rem;
+      box-shadow: 0 10px 36px 0 rgba(0,0,0,0.22);
+      padding: 54px 58px 50px 58px;
+      margin-bottom: 60px;
+    }
+    @media (max-width: 1350px) {
+      .contact-main { max-width: 96vw; padding: 48px 10vw; }
+    }
+    @media (max-width: 1050px) {
+      .contact-main { flex-direction: column; align-items: stretch; gap: 32px; padding: 35px 3vw; }
+    }
+    @media (max-width: 600px) {
+      .contact-main { padding: 18px 0.2rem 22px 0.2rem; border-radius: 0.9rem; }
+      .contact-header h1 { font-size: 2rem; }
+    }
+    .contact-cards-list {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      min-width: 325px;
+      max-width: 370px;
+      flex: 1 1 340px;
+    }
+    @media (max-width: 500px) {
+      .contact-cards-list { min-width: 0; max-width: 100%; }
+    }
+    .contact-card {
+      background: linear-gradient(110deg, rgba(0,225,255,0.11) 0%, rgba(139,92,255,0.13) 100%);
+      border-radius: 1.2rem;
+      box-shadow: 0 3px 22px 0 rgba(139,92,255,0.08);
+      display: flex;
+      align-items: center;
+      gap: 19px;
+      padding: 26px 22px 22px 22px;
+      position: relative;
+      overflow: hidden;
+      border: 1.5px solid rgba(255,255,255,0.05);
+      transition: box-shadow 0.18s, border 0.18s;
+    }
+    .contact-card:hover {
+      box-shadow: 0 8px 32px 0 rgba(139,92,255,0.18);
+      border: 1.5px solid var(--accent-b);
+    }
+    .contact-card .icon {
+      background: linear-gradient(135deg, var(--accent-c), var(--accent-b) 65%);
+      color: #fff;
+      border-radius: 50%;
+      width: 54px; height: 54px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 2px 12px 0 rgba(139,92,255,0.11);
+      flex-shrink: 0;
+    }
+    .contact-card .card-info {
+      flex: 1 1 auto;
+      display: flex; flex-direction: column; gap: 3px;
+    }
+    .contact-card .label {
+      font-size: 0.97rem;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+    .contact-card .value {
+      color: var(--text-main);
+      font-size: 1.27rem;
+      font-weight: 700;
+      word-break: break-all;
+    }
+    .contact-card .extra {
+      font-size: 0.97rem;
+      color: var(--muted);
+      margin-top: 2px;
+      font-weight: 500;
+    }
+    /* Form Styles */
+    .contact-form-wrap {
+      flex: 1 1 460px;
+      background: rgba(28, 61, 83, 0.96);
+      border-radius: 1.3rem;
+      padding: 30px 37px;
+      box-shadow: 0 2px 20px 0 rgba(0,0,0,0.09);
+      min-width: 320px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .contact-form-wrap h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--accent-d);
+      margin-bottom: 15px;
+      letter-spacing: 0.03em;
+    }
+    .contact-form .form-label {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.98rem;
+      margin-bottom: 4px;
+    }
+    .contact-form .form-control,
+    .contact-form textarea {
+      background: rgba(39, 48, 65, 0.23);
+      border: none;
+      border-radius: 0.7rem;
+      color: var(--text-main);
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+      padding: 10px 14px;
+      box-shadow: none;
+      transition: background 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .contact-form .form-control:focus,
+    .contact-form textarea:focus {
+      background: rgba(0,225,255,0.10);
+      box-shadow: 0 0 0 2px var(--accent-a);
+    }
+    .contact-form textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+    .contact-form .btn-submit {
+      background: linear-gradient(90deg, var(--accent-a), var(--accent-b), var(--accent-c), var(--accent-d));
+      color: #0a0a0a;
+      font-weight: 700;
+      border: none;
+      border-radius: 30px;
+      padding: 11px 32px;
+      font-size: 1.08rem;
+      letter-spacing: 0.03em;
+      transition: transform 0.19s, box-shadow 0.19s;
+      box-shadow: 0 3px 18px 0 rgba(0,225,255,0.10);
+      background-size: 300% 300%;
+      animation: gradientMove 5s ease infinite;
+      margin-top: 7px;
+    }
+    .contact-form .btn-submit:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 6px 20px 0 rgba(0,0,0,0.11);
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    /* Responsive Form */
+    @media (max-width: 600px) {
+      .contact-form-wrap { padding: 15px 7px; border-radius: 0.7rem; }
+      .contact-form-wrap h2 { font-size: 1.18rem; }
+    }
+  </style>
+
+  
+  <!-- Blurry Moving Background Shapes -->
+  <div class="blurry-bg-shapes">
+    <div class="blurry-shape shape1"></div>
+    <div class="blurry-shape shape2"></div>
+    <div class="blurry-shape shape3"></div>
+    <div class="blurry-shape shape4"></div>
+  </div> 
+
+  <div class="contact-page-container">
+    <div class="contact-header">
+      <h1>Contact Us</h1>
+      <p>Have questions, want to start a project, or need support? Reach out to Altoxic Technology. We're here to help and innovate with you.</p>
+    </div>
+    <div class="contact-main">
+      <!-- Unique Contact Cards -->
+      <div class="contact-cards-list">
+        <div class="contact-card">
+          <div class="icon">
+            <i class="bi bi-envelope-fill"></i>
+          </div>
+          <div class="card-info">
+            <div class="label">Email</div>
+            <div class="value" style="font-size: 1rem;">ultoxy.tech@gmail.com</div>
+            <div class="extra">We reply within 24 hours</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="icon" style="background: linear-gradient(135deg, var(--accent-a), var(--accent-d) 60%);">
+            <i class="bi bi-telephone-fill"></i>
+          </div>
+          <div class="card-info">
+            <div class="label">Phone</div>
+            <div class="value">+91 7776824564</div>
+            <div class="value">+91 7030599317</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="icon" style="background: linear-gradient(135deg, var(--accent-b), var(--accent-c) 60%);">
+            <i class="bi bi-person-fill"></i>
+          </div>
+          <div class="card-info">
+            <div class="label">Contact Person</div>
+            <div class="value">Rameshwar Pawar</div>
+            <div class="value">Krishna Thore</div>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="icon" style="background: linear-gradient(135deg, var(--accent-d), var(--accent-c) 60%);">
+            <i class="bi bi-geo-alt-fill"></i>
+          </div>
+          <div class="card-info">
+            <div class="label">Location</div>
+            <div class="value">Pune, Maharashtra</div>
+            <div class="extra">India</div>
+          </div>
+        </div>
+      </div>
+      <!-- Contact Form -->
+      <div class="contact-form-wrap">
+        <h2>Send Us a Message</h2>
+        <form class="contact-form" autocomplete="off">
+          <div class="mb-2">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Your full name" required>
+          </div>
+          <div class="mb-2">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" placeholder="Your email address" required>
+          </div>
+          <div class="mb-2">
+            <label for="phone" class="form-label">Mobile Number</label>
+            <input type="tel" class="form-control" id="phone" placeholder="+91 98765 43210" pattern="[\d\s\+\-]{10,18}">
+          </div>
+          <div class="mb-2">
+            <label for="message" class="form-label">Your Message</label>
+            <textarea class="form-control" id="message" placeholder="How can we help you?" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-submit mt-1 w-100">Send Message <i class="bi bi-send ms-1"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+{% endblock content %}
+  

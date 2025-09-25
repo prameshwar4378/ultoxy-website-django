@@ -1,0 +1,356 @@
+ 
+{% extends 'website_base.html' %}
+{% load static %}
+{% block title %}Ultoxy - Elevate Everything With Ultoxy{% endblock %}
+{% block content %}
+  
+  <section class="hero-section" id="home">
+    <div class="hero-container">
+      <video id="heroVideo" class="hero-video" muted autoplay loop playsinline>
+        <source src="{% static "img/bg-video.mp4" %}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-layer"></div>
+      <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:3;">
+        <div class="ultoxy-logo" id="ultoxyLogo"></div>
+        <br><br>
+        <div class="ultoxy-slogan">
+          Elevate Everything With Ultoxy
+        </div>
+        <div class="ultoxy-buttons">
+          <button class="ultoxy-btn" onclick="window.location='#contact'"><span>Contact Us</span></button>
+          <button class="ultoxy-btn" onclick="window.location='#services'"><span>Our Services</span></button>
+        </div>
+        <!-- Scroll Down Button -->
+        <button class="scroll-down-btn" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'});" aria-label="Scroll Down">
+          <span class="arrow-circle">
+            <svg class="arrow-svg" viewBox="0 0 24 24" fill="none">
+              <path d="M12 6V18" stroke="#fff" stroke-width="2.8" stroke-linecap="round"/>
+              <path d="M6 12l6 6 6-6" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+
+  
+  
+
+
+
+<section id="about" class="aboutus-glass-section"> 
+  <!-- Animated lines canvas -->
+  <canvas class="aboutus-canvas" id="aboutCanvas"></canvas>
+  
+  <div class="aboutus-glass-card">
+    <div class="aboutus-glass-content">
+        <section class="heading-section">
+        <h2>Ultoxy: Elevate Your Digital Experience</h2>
+        <p>
+          Ultoxy is a team of bold thinkers, designers, and engineers. We build digital experiences that captivate, empower, and drive growth—blending strategy, design, and technology for results that stand out. Our work is defined by clarity, creativity, and relentless attention to detail.
+        </p>
+        <div class="heading-underline"></div>
+      </section> 
+      <div class="aboutus-features">
+        <div class="feature-item">
+          <span class="icon-check"></span>
+          <span>Visionary UI &amp; UX</span>
+        </div>
+        <div class="feature-item">
+          <span class="icon-check"></span>
+          <span>Custom Engineering</span>
+        </div>
+        <div class="feature-item">
+          <span class="icon-check"></span>
+          <span>Human-Centered Solutions</span>
+        </div>
+        <div class="feature-item">
+          <span class="icon-check"></span>
+          <span>Trusted by Global Brands</span>
+        </div>
+      </div> 
+      <center>
+        <a href="" class="contact-btn">Read More</a>
+      </center>
+    </div>
+    <div class="aboutus-glass-image">
+      <div class="aboutus-img-frame">
+        <img loading="lazy"  src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=600&q=80"  alt="Ultoxy Team" />
+      </div>
+      <div class="aboutus-img-caption">
+        <span>Where innovation meets precision</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Floating elements for static animation -->
+  <div class="floating-element float1"></div>
+  <div class="floating-element float2"></div>
+  <div class="floating-element float3"></div>
+</section>
+
+ 
+
+<style>
+  .tech-stack-icon {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tech-stack-icon i {
+  font-size: 2.8rem; /* adjust to taste */
+  color: white;      /* change per design */
+  transition: transform 0.3s ease;
+}
+
+.tech-stack-icon i:hover {
+  transform: scale(1.2);
+}
+
+</style>
+
+<div class="tech-stack-container">
+  <div class="tech-stack-blur-bg" id="tech-stack-blur-bg"></div>
+  <div class="tech-stack-center-content" id="tech-stack-center-content">
+    <h1>Technical Stacks</h1>
+    <button class="tech-stack-btn">Explore</button>
+  </div>
+  <div class="tech-stack-icons-area" id="tech-stack-icons-area"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <br><br>
+  <!-- ===== Services Section ===== -->
+  <section class="services-section container">
+<section class="heading-section">
+  <h2>Our Services</h2>
+  <p>
+    We offer a comprehensive suite of services designed to elevate your brand, streamline your operations, and drive measurable results. With a focus on quality, innovation, and client success, our expert team delivers tailored solutions across every stage of your business journey.
+  </p>
+  <div class="heading-underline"></div>
+</section>
+
+
+    <div class="row g-4 justify-content-center px-2">
+      
+      <!-- Website Development -->
+      <div class="col-md-6 col-lg-4">
+        <div class="service-card">
+          <i class="bi bi-laptop service-icon accent-a"></i>
+          <h5 class="service-title" style="color: var(--accent-a);">Website Development</h5>
+          <p class="service-desc">Static, dynamic, and e-commerce websites built with speed, security, and creativity.</p>
+        </div>
+      </div>
+
+      <!-- Mobile App Development -->
+      <div class="col-md-6 col-lg-4">
+        <div class="service-card">
+          <i class="bi bi-phone service-icon accent-b"></i>
+          <h5 class="service-title"  style="color: var(--accent-b);">Mobile App Development</h5>
+          <p class="service-desc">Android and iOS applications designed for usability, performance, and scalability.</p>
+        </div>
+      </div>
+
+      <!-- Desktop Software -->
+      <div class="col-md-6 col-lg-4">
+        <div class="service-card">
+          <i class="bi bi-pc-display service-icon accent-c"></i>
+          <h5 class="service-title"  style="color: var(--accent-c);">Desktop Software</h5>
+          <p class="service-desc">Custom ERP and desktop software solutions to simplify and optimize business operations.</p>
+        </div>
+      </div>
+
+      <!-- Digital Marketing -->
+      <div class="col-md-6 col-lg-4">
+        <div class="service-card">
+          <i class="bi bi-bullseye service-icon accent-d"></i>
+          <h5 class="service-title"  style="color: var(--accent-d);">Digital Marketing</h5>
+          <p class="service-desc">From social media to campaigns, we craft strategies that drive visibility and results.</p>
+        </div>
+      </div>
+
+      <!-- SEO Optimization -->
+      <div class="col-md-6 col-lg-4">
+        <div class="service-card">
+          <i class="bi bi-graph-up-arrow service-icon accent-e"></i>
+          <h5 class="service-title"  style="color: var(--accent-e);">SEO Optimization</h5>
+          <p class="service-desc">On-page, off-page, and technical SEO practices that help you rank and grow organically.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+<br><br><br><br>
+
+  <!-- ===== Projects Section ===== -->
+  <section class="projects-section container mt-4">
+    <section class="heading-section">
+      <h2>Our Projects</h2>
+      <p>
+        Discover a selection of our featured projects that highlight our dedication to quality, creativity, and impact. From custom web solutions to full-scale digital transformations, each project reflects our commitment to helping clients achieve real-world results.
+      </p>
+      <div class="heading-underline"></div>
+    </section>
+
+
+    <div class="row g-4" style="padding: 0 15px;">
+
+      <!-- Project 1 -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="project-card">
+          <img loading="lazy"  src="https://www.picmaker.com/assets/images/YoutubeThumbnail/Free-YouTube-thumbnail-maker.png" alt="Website Project" class="project-thumb">
+          <div class="project-body">
+            <div>
+              <h5 class="project-title">E-Commerce Website</h5>
+              <p class="project-type">Website Development</p>
+            </div>
+            <a href="#" target="_blank" class="project-link"><i class="bi bi-box-arrow-up-right"></i> Visit Project</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="project-card">
+          <img loading="lazy"  src="https://www.picmaker.com/assets/images/YoutubeThumbnail/Free-YouTube-thumbnail-maker.png" alt="App Project" class="project-thumb">
+          <div class="project-body">
+            <div>
+              <h5 class="project-title">Food Delivery App</h5>
+              <p class="project-type">Mobile App Development</p>
+            </div>
+            <a href="#" target="_blank" class="project-link"><i class="bi bi-box-arrow-up-right"></i> Visit Project</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="project-card">
+          <img loading="lazy"  src="https://www.picmaker.com/assets/images/YoutubeThumbnail/Free-YouTube-thumbnail-maker.png" alt="Software Project" class="project-thumb">
+          <div class="project-body">
+            <div>
+              <h5 class="project-title">Inventory Management</h5>
+              <p class="project-type">Desktop Software</p>
+            </div>
+            <a href="#" target="_blank" class="project-link"><i class="bi bi-box-arrow-up-right"></i> Visit Project</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="project-card">
+          <img loading="lazy"  src="https://www.picmaker.com/assets/images/YoutubeThumbnail/Free-YouTube-thumbnail-maker.png" alt="Marketing Project" class="project-thumb">
+          <div class="project-body">
+            <div>
+              <h5 class="project-title">Brand Campaign</h5>
+              <p class="project-type">Digital Marketing</p>
+            </div>
+            <a href="#" target="_blank" class="project-link"><i class="bi bi-box-arrow-up-right"></i> Visit Project</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="col-sm-6 col-lg-4">
+        <div class="project-card">
+          <img loading="lazy"  src="https://www.picmaker.com/assets/images/YoutubeThumbnail/Free-YouTube-thumbnail-maker.png" alt="SEO Project" class="project-thumb">
+          <div class="project-body">
+            <div>
+              <h5 class="project-title">SEO Growth Plan</h5>
+              <p class="project-type">SEO Optimization</p>
+            </div>
+            <a href="#" target="_blank" class="project-link"><i class="bi bi-box-arrow-up-right"></i> Visit Project</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+ 
+
+
+
+
+ 
+  <br><br><br>
+  <section class="team-section py-4 mt-4">
+    <div class="container">
+    <section class="heading-section">
+      <h2>Our Team</h2>
+      <p>
+        Meet the passionate professionals behind our success. Our team is a dynamic blend of creativity, expertise, and dedication, working together to deliver exceptional results and build lasting relationships with our clients.
+      </p>
+      <div class="heading-underline"></div>
+    </section>
+
+
+      <div class="row justify-content-center g-4">
+
+        <!-- Member 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="team-card">
+            <div class="avatar-wrap">
+              <div class="avatar-ring" ></div>
+              <img loading="lazy"  src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" loading="lazy" alt="Emily Davis" class="avatar">
+            </div><br>
+            <h5 style="color: white; margin-top:20px">Mr.Krishna Thore</h5>
+            <span style="color: white; margin-top:2px; font-weight: 200;">CEO/Founder</p>
+            <div class="social-links">
+              <a href="#"><i class="bi bi-linkedin"></i></a>
+              <a href="#"><i class="bi bi-twitter"></i></a>
+              <a href="#"><i class="bi bi-github"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Member 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="team-card">
+            <div class="avatar-wrap">
+              <div class="avatar-ring"></div>
+              <img loading="lazy"  src="{% static 'img/rameshwar.jpg' %}" loading="lazy" alt="Michael Brown" class="avatar">
+            </div><br>
+            <h5  style="color: white; margin-top:20px">Mr.Rameshwar Pawar</h5>
+            <span  style="color: white; margin-top:2px; font-weight: 200;">Co-Founder/Software Developer</p>
+            <div class="social-links">
+              <a href="#"><i class="bi bi-linkedin"></i></a>
+              <a href="#"><i class="bi bi-twitter"></i></a>
+              <a href="#"><i class="bi bi-github"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+<br><br><br>
+
+ 
+
+  
+<script src="{% static 'js/templatemo-3d-coverflow-scripts.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock content %}

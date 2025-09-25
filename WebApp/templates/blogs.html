@@ -1,0 +1,306 @@
+{% extends 'website_base.html' %}
+{% load static %}
+{% block title %}Contact Us - Ultoxy Technology{% endblock %}
+{% block content %}
+  
+
+  <!-- <style>
+    :root {
+      --text-main: #eef2f6;
+      --muted: #9aa1ad;
+      --accent-a: #00e1ff;
+      --accent-b: #8b5cff;
+      --accent-c: #ff7ab6;
+      --accent-d: #ffb86b;
+      --footer-bg: #0a0a0a;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0e0e0e, #1a1a1a);
+      color: var(--text-main);
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+    }
+
+    .blog-section {
+      padding: 80px 20px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-heading h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--accent-a), var(--accent-b), var(--accent-c), var(--accent-d));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Blog Cards */
+    .blog-card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 26px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 32px rgba(0, 225, 255, 0.10), 
+                  0 2px 6px rgba(139, 92, 255, 0.10);
+      transition: all 0.4s ease-in-out;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(0, 225, 255, 0.18),
+                  0 4px 12px rgba(139, 92, 255, 0.15);
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-top-left-radius: 26px;
+      border-top-right-radius: 26px;
+    }
+
+    .blog-content {
+      padding: 25px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-content h5 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--text-main);
+    }
+
+    .blog-content p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      flex-grow: 1;
+    }
+
+    .read-more {
+      margin-top: 20px;
+      color: var(--accent-a);
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .read-more:hover {
+      color: var(--accent-c);
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .blog-content h5 {
+        font-size: 1.1rem;
+      }
+      .blog-content p {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .blog-card img {
+        height: 180px;
+      }
+    }
+  </style> -->
+
+
+
+<!-- 
+  <section class="blog-section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Latest Blogs</h2>
+      </div>
+      <div class="row g-4">
+        {% for blog in blogs %}
+        <div class="col-lg-3 col-md-6">
+          <div class="blog-card">
+            <img src="{{ blog.thumbnail.url }}" loading="lazy"  alt="Ultoxy Tech {{ blog.title }}">
+
+            <div class="blog-content">
+              <h5>{{ blog.title }}</h5>
+
+              <p>{{ blog.description|truncatewords:20 }}</p>
+
+              <a href="#" class="read-more"  data-toggle="modal" data-target="#model_details">Read More →</a>
+
+              <div class="mt-2 d-flex align-items-center">
+                <img src="{{ blog.author_image.url }}" loading="lazy"  alt="Ultoxy Tech {{ blog.author_name }}" class="rounded-circle" style="width:30px; height:30px; object-fit:cover; margin-right:10px;">
+                <small>{{ blog.author_name }} | {{ blog.date }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+
+
+  -->
+  <style>
+
+    .blog-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+    }
+
+    .blog-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .blog-card .card-body {
+      color: #fff;
+    }
+
+    .blog-card .card-title {
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .blog-card .card-text {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.75);
+    }
+    .btn-glass {
+      border: 1.5px solid rgba(255, 255, 255, 0.22);
+      background: linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.14) 100%);
+      color: #fff;
+      padding: 0.5em 1.2em;
+      font-size: 1rem;
+      border-radius: 0.75em;
+      box-shadow: 0 4px 18px rgba(102,126,234,0.08), 0 1.5px 6px rgba(0,0,0,0.09);
+      backdrop-filter: blur(9px) saturate(140%);
+      -webkit-backdrop-filter: blur(9px) saturate(140%);
+      transition: 
+        background 0.35s cubic-bezier(.62,.2,.19,1.03),
+        border-color 0.25s cubic-bezier(.62,.2,.19,1.03),
+        box-shadow 0.25s cubic-bezier(.62,.2,.19,1.03),
+        color 0.18s linear,
+        transform 0.15s cubic-bezier(.62,.2,.19,1.03);
+      outline: none;
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .btn-glass:focus-visible {
+      border-color: #00ffc6;
+      box-shadow: 0 0 0 3px rgba(0,255,198,0.21);
+    }
+    .btn-glass:hover, .btn-glass:active {
+      background: linear-gradient(135deg, rgba(255,255,255,0.19) 0%, rgba(255,255,255,0.27) 100%);
+      border-color: rgba(255,255,255,0.42);
+      color: #00ffc6;
+      box-shadow: 0 6px 24px rgba(102,126,234,0.16), 0 2.5px 12px rgba(0,0,0,0.14);
+      transform: translateY(-2px) scale(1.03);
+    }
+    .btn-sm {
+      padding: 0.35em 0.85em;
+      font-size: 0.92rem;
+      border-radius: 0.6em;
+    }
+
+
+
+
+
+
+
+        :root {
+      --text-main: #eef2f6;
+      --muted: #9aa1ad;
+      --accent-a: #00e1ff;
+      --accent-b: #8b5cff;
+      --accent-c: #ff7ab6;
+      --accent-d: #ffb86b;
+      --footer-bg: #0a0a0a;
+    }
+
+    body {
+      background: #0d0d0f;
+      color: var(--text-main);
+      font-family: system-ui, sans-serif;
+      padding: 40px;
+    }
+
+    /* Documentation Heading */
+    .doc-heading {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg,
+        var(--accent-a),
+        var(--accent-b),
+        var(--accent-c),
+        var(--accent-d)
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+
+    .doc-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+  </style>
+
+
+<div class="container  " style="margin-top: 100px;">
+<center>
+          <h1 class="doc-heading">Our Updates</h1>
+        <p class="doc-subtitle">This is the line.</p>
+</center>
+
+    <div class="row g-4">
+      <!-- Blog Card 1 -->
+        {% for blog in blogs %}
+      <div class="col-md-6 col-lg-4">
+        <div class="card blog-card h-100">
+          <img src="{{ blog.thumbnail.url }}" loading="lazy"  class="card-img-top" alt="Blog 1"   alt="Ultoxy Tech {{ blog.title }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ blog.title }}</h5>
+            <p class="card-text">{{ blog.description|truncatewords:20 }}</p>
+            <a href="#" class="btn btn-glass btn-sm">Read More</a>
+          </div>
+        </div>
+      </div> 
+        {% endfor %}
+    </div>
+  </div>
+
+
+   
+
+{% endblock content %}
+  
