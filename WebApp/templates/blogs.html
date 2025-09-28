@@ -290,8 +290,8 @@
           <img src="{{ blog.thumbnail.url }}" loading="lazy"  class="card-img-top" alt="Blog 1"   alt="Ultoxy Tech {{ blog.title }}">
           <div class="card-body">
             <h5 class="card-title">{{ blog.title }}</h5>
-            <p class="card-text">{{ blog.description|truncatewords:20 }}</p>
-            <a href="{% url 'blog_details' %}" class="btn btn-glass btn-sm">Read More</a>
+            <p class="card-text">{{ blog.content|truncatewords:20 }}</p>
+            <a href="{% url 'blog_details' blog.id %}" class="btn btn-glass btn-sm">Read More</a>
           </div>
         </div>
       </div> 

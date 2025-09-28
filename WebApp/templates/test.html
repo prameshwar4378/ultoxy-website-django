@@ -1,8 +1,13 @@
-{% extends 'website_base.html' %}
-{% load static %}
-{% block title %}Contact Us - Ultoxy Technology{% endblock %}
-{% block content %}
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/css/uikit.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.min.js"></script>
+</head>
 
 <style>
     
@@ -87,24 +92,11 @@
   padding: 40px 0 20px 0;
 }
 
- 
 .blog .entry {
   padding: 30px;
   margin-bottom: 60px;
-
-  background: linear-gradient(
-    135deg,
-    rgba(190, 218, 255, 0.25), /* light sky blue */
-    rgba(240, 185, 253, 0.25)   /* light purple */
-  );
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 16px;
-  color: #fff; /* makes text pop */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
- 
 
 .blog .entry .entry-img {
   max-height: 440px;
@@ -280,19 +272,8 @@
 .blog .blog-author {
   padding: 20px;
   margin-bottom: 30px;
-  background: linear-gradient(
-    135deg,
-    rgba(190, 218, 255, 0.25), /* light sky blue */
-    rgba(240, 185, 253, 0.25)   /* light purple */
-  );
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 16px;
-  color: #fff; /* makes text pop */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
-
 
 .blog .blog-author img {
   width: 120px;
@@ -467,18 +448,6 @@
   padding: 30px;
   margin: 0 0 60px 20px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  
-  background: linear-gradient(
-    135deg,
-    rgba(190, 218, 255, 0.25), /* light sky blue */
-    rgba(240, 185, 253, 0.25)   /* light purple */
-  );
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 16px;
-  color: #fff; /* makes text pop */
 }
 
 .blog .sidebar .sidebar-title {
@@ -625,8 +594,8 @@
 }
 
 </style>
-
-<main id="main">
+<body>
+ <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
     <section class="breadcrumbs">
@@ -644,33 +613,33 @@
 
     <!-- ======= Blog Single Section ======= -->
     <section id="blog" class="blog">
-      <div class="container " data-aos="fade-up">
+      <div class="container" data-aos="fade-up">
 
         <div class="row">
-          <div class="col-lg-8 entries ">
+          <div class="col-lg-8 entries">
 
-            <article class="entry entry-single ">
+            <article class="entry entry-single">
 
               <div class="entry-img">
-                <img src="{{news_details.thumbnail.url}}" alt="" class="img-fluid" style="width: 100%; ">
+                <img src="{{news_details.thumbnail.url}}" alt="" class="img-fluid">
               </div>
 
               <h2 class="entry-title">
-                <a href="#"  style="color: rgb(0, 225, 255);">{{news_details.title}}</a>
+                <a href="">{{news_details.title}}</a>
               </h2>
 
               <div class="entry-meta">
 
                 <div class="row">
-                  <div> <i class="bi bi-clock"></i> <a href=""  style="color: rgb(224, 202, 202);"> {{news_details.date}}</a></a></div>
+                  <div> <i class="bi bi-clock"></i> <a href=""> {{news_details.date}}</a></a></div>
                 </div>
 
               </div>
 
               <div class="entry-content">
-                <span style="font-weight: 100;">
+                <p>
                   {{ news_details.content }}
-                </span>
+                </p>
 
               </div>
 
@@ -723,13 +692,13 @@
             <div class="sidebar">
               <h3 class="sidebar-title">Recent News</h3>
               <div class="sidebar-item recent-posts">
-                {% for post in latest_news %}
+                {% for news in latest_news %}
                 <div class="post-item clearfix">
-                  {% if post.thumbnail %}
-                  <img src="{{post.thumbnail.url}} " alt="">
+                  {% if news.thumbnail %}
+                  <img src="{{news.thumbnail.url}} " alt="">
                   {% endif %}
-                  <h4><a href="{% url "blog_details" post.id %}" style="color: white;">{{post.title}}</a></h4>
-                  <time datetime="2020-01-01">{{post.date}}</time>
+                  <h4><a href="{% url "website_news_details" news.id %}">{{news.title}}</a></h4>
+                  <time datetime="2020-01-01">{{news.date}}</time>
                 </div>
                 {% endfor %}
 
@@ -752,5 +721,5 @@
   <script src="https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/js/uikit.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/js/uikit-icons.min.js"></script>
 
-{% endblock content %}
-  
+</body>
+</html>

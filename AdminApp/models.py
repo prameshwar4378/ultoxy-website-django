@@ -4,14 +4,42 @@ class BlogPost(models.Model):
     title = models.CharField(max_length=255)
     category = models.CharField(max_length=100)
     date = models.DateField()
-    description = models.TextField()  # Will use Summernote for this field
+    content = models.TextField()  # Will use Summernote for this field
     thumbnail = models.ImageField(upload_to='blog_thumbnails/')
     author_name = models.CharField(max_length=100)
     author_image = models.ImageField(upload_to='author_images/')
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title
 
+    
+class BlogPhotosVideos(models.Model):
+    blog = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="blog_photos/", blank=True, null=True)
+    video_link = models.CharField(blank=True, null=True, help_text="Enter YouTube video link", max_length=255)
+    def __str__(self):
+        return f"{self.blog.title} Photos and Videos"
+
+    def get_youtube_embed_url(self):
+        if self.video_link:
+            video_id = self.get_video_id()
+            print(video_id)
+            return f"https://www.youtube.com/embed/{video_id}"
+        return None
+
+    def get_video_id(self):
+        if self.video_link:
+            return self.video_link.split('v=')[-1]
+        return None
+
+    def video_thumbnail(self):
+        if self.video_link:
+            video_id = self.get_video_id()
+            return f"https://img.youtube.com/vi/{video_id}/0.jpg"
+        return None
+
+    
 
 
 
