@@ -3,6 +3,9 @@
 {% block title %}Contact Us - Ultoxy Technology{% endblock %}
 {% block content %}
   
+{% block headlinks %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/css/uikit.min.css" />
+{% endblock headlinks %}
 
 <style>
     
@@ -683,7 +686,7 @@
 
             <div class="blog-author d-flex align-items-center">
               <div class="container">
-                <h3><b>Photos</b></h3>
+                <h3 style="color: white;"><b>Photos</b></h3>
                 <div class="uk-child-width-1-5@m " uk-grid uk-lightbox="animation: slide">
                   {% for photo in news_photos %}
                   <div class="">
@@ -700,7 +703,7 @@
 
             <div class="blog-author d-flex align-items-center">
               <div class="container">
-                <h3><b>Videos</b></h3>
+                <h3 style="color: white;"><b>Videos</b></h3>
                 <div class="row">
                 {% for i in video_data %}
                 <div class="col-12 col-sm-3 col-md-fifth mb-4">
@@ -747,6 +750,7 @@
     </section><!-- End Blog Single Section -->
 
   </main><!-- End #main -->
+
 
 
   <script src="https://cdn.jsdelivr.net/npm/uikit@3.20.8/dist/js/uikit.min.js"></script>

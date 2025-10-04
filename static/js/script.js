@@ -30,64 +30,64 @@
       }
     });
 
-    // // Next level mouse move animation: trailing 3D dots + expanding energy waves
-    // const canvas = document.querySelector('.effect-canvas');
-    // let lastX = null, lastY = null;
-    // let trail = [];
-    // function createDot(x, y) {
-    //   const dot = document.createElement('div');
-    //   dot.className = 'trail-dot';
-    //   dot.style.left = (x - 13) + 'px';
-    //   dot.style.top = (y - 13) + 'px';
-    //   dot.style.background = `radial-gradient(circle at 30% 30%, #00ffc6 0%, #ff6ec7 80%)`;
-    //   canvas.appendChild(dot);
-    //   if (lastX !== null && Math.abs(x - lastX) + Math.abs(y - lastY) > 32) {
-    //     dot.classList.add('bounce');
-    //   }
-    //   setTimeout(() => {
-    //     dot.style.opacity = "0";
-    //     dot.style.filter = "blur(12px)";
-    //   }, 580);
-    //   setTimeout(() => {
-    //     if (dot.parentNode) dot.parentNode.removeChild(dot);
-    //   }, 850);
-    //   trail.push(dot);
-    //   if (trail.length > 30) {
-    //     let old = trail.shift();
-    //     if (old && old.parentNode) old.parentNode.removeChild(old);
-    //   }
-    // }
-    // function createWave(x, y) {
-    //   const wave = document.createElement('div');
-    //   wave.className = 'energy-wave';
-    //   wave.style.left = (x - 60) + 'px';
-    //   wave.style.top = (y - 60) + 'px';
-    //   canvas.appendChild(wave);
-    //   setTimeout(() => {
-    //     if (wave.parentNode) wave.parentNode.removeChild(wave);
-    //   }, 900);
-    // }
-    // document.addEventListener('mousemove', (e) => {
-    //   const { clientX: x, clientY: y } = e;
-    //   createDot(x, y);
-    //   if (lastX !== null && Math.abs(x - lastX) + Math.abs(y - lastY) > 110) {
-    //     createWave(x, y);
-    //   }
-    //   lastX = x;
-    //   lastY = y;
-    // });
-    // document.addEventListener('touchmove', (e) => {
-    //   const touch = e.touches[0];
-    //   if (touch) {
-    //     createDot(touch.clientX, touch.clientY);
-    //   }
-    // }, {passive:true});
-    // function resizeCanvas() {
-    //   canvas.style.width = window.innerWidth + 'px';
-    //   canvas.style.height = window.innerHeight + 'px';
-    // }
-    // window.addEventListener('resize', resizeCanvas);
-    // resizeCanvas();
+    // Next level mouse move animation: trailing 3D dots + expanding energy waves
+    const canvas = document.querySelector('.effect-canvas');
+    let lastX = null, lastY = null;
+    let trail = [];
+    function createDot(x, y) {
+      const dot = document.createElement('div');
+      dot.className = 'trail-dot';
+      dot.style.left = (x - 13) + 'px';
+      dot.style.top = (y - 13) + 'px';
+      dot.style.background = `radial-gradient(circle at 30% 30%, #00ffc6 0%, #ff6ec7 80%)`;
+      canvas.appendChild(dot);
+      if (lastX !== null && Math.abs(x - lastX) + Math.abs(y - lastY) > 32) {
+        dot.classList.add('bounce');
+      }
+      setTimeout(() => {
+        dot.style.opacity = "0";
+        dot.style.filter = "blur(12px)";
+      }, 580);
+      setTimeout(() => {
+        if (dot.parentNode) dot.parentNode.removeChild(dot);
+      }, 850);
+      trail.push(dot);
+      if (trail.length > 30) {
+        let old = trail.shift();
+        if (old && old.parentNode) old.parentNode.removeChild(old);
+      }
+    }
+    function createWave(x, y) {
+      const wave = document.createElement('div');
+      wave.className = 'energy-wave';
+      wave.style.left = (x - 60) + 'px';
+      wave.style.top = (y - 60) + 'px';
+      canvas.appendChild(wave);
+      setTimeout(() => {
+        if (wave.parentNode) wave.parentNode.removeChild(wave);
+      }, 900);
+    }
+    document.addEventListener('mousemove', (e) => {
+      const { clientX: x, clientY: y } = e;
+      createDot(x, y);
+      if (lastX !== null && Math.abs(x - lastX) + Math.abs(y - lastY) > 110) {
+        createWave(x, y);
+      }
+      lastX = x;
+      lastY = y;
+    });
+    document.addEventListener('touchmove', (e) => {
+      const touch = e.touches[0];
+      if (touch) {
+        createDot(touch.clientX, touch.clientY);
+      }
+    }, {passive:true});
+    function resizeCanvas() {
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
 
     // Logo Animation
     const text = "Ultoxy";
