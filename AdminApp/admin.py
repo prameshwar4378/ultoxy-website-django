@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import BlogPost, ContactInquiry
+from .models import BlogPost, ContactInquiry, Projects, BlogPhotosVideos
  
 @admin.register(ContactInquiry)
 class ContactInquiryAdmin(admin.ModelAdmin):
@@ -88,3 +88,40 @@ class BlogPhotosVideosAdmin(admin.ModelAdmin):
         return "No Video"
     video_thumbnail_preview.short_description = "Video Thumbnail"
  
+
+
+
+
+from django.utils.html import format_html
+
+@admin.register(Projects)
+class ProjectsAdmin(admin.ModelAdmin):
+    list_display = ('project_name', 'project_type', 'is_active')
+    list_filter = ('project_type', 'is_active')
+    search_fields = ('project_name', 'project_type')
+    list_editable = ('is_active',)
+    ordering = ('project_name',)
+    list_per_page = 20
+
+    readonly_fields = ('image_preview', 'long_image_preview')
+
+    fieldsets = (
+        ('Basic Information', {
+            'fields': ('project_name', 'project_type', 'project_description', 'link', 'is_active')
+        }),
+        ('Images', {
+            'fields': ('project_image', 'image_preview', 'project_long_image', 'long_image_preview')
+        }),
+    )
+
+    def image_preview(self, obj):
+        if obj.project_image:
+            return format_html('<img src="{}" width="150" style="border-radius:8px;"/>', obj.project_image.url)
+        return "(No image)"
+    image_preview.short_description = "Project Image Preview"
+
+    def long_image_preview(self, obj):
+        if obj.project_long_image:
+            return format_html('<img src="{}" width="250" style="border-radius:8px;"/>', obj.project_long_image.url)
+        return "(No image)"
+    long_image_preview.short_description = "Long Image Preview"

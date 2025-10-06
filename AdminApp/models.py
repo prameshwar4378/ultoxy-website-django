@@ -39,8 +39,6 @@ class BlogPhotosVideos(models.Model):
             return f"https://img.youtube.com/vi/{video_id}/0.jpg"
         return None
 
-    
-
 
 
 class ContactInquiry(models.Model):
@@ -52,3 +50,29 @@ class ContactInquiry(models.Model):
 
     def __str__(self):
         return f"Inquiry from {self.name} ({self.email})"
+
+
+
+
+from django.core.exceptions import ValidationError
+
+class Projects(models.Model):
+    project_name = models.CharField(max_length=255)
+    project_type = models.CharField(max_length=100)
+    project_description = models.TextField()
+    project_image = models.ImageField(upload_to='project_images/', blank=True, null=True)
+    project_long_image = models.ImageField(upload_to='project_images/', blank=True, null=True)
+    link = models.URLField(blank=True, null=True)
+    is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.project_name
+
+    def clean(self):
+        """Ensure at least one image field is provided."""
+        if not self.project_image and not self.project_long_image:
+            raise ValidationError("At least one of Project Image or Long Project Image is required.")
+
+
+
+ 

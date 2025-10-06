@@ -444,11 +444,14 @@
 
         <div class="col-lg-12">
           <div class="loop owl-carousel">
+           
+          {% for i in projects %}
+            {% if i.is_active and i.project_long_image %}
             <div class="item">
               <a href="#">
                 <div class="portfolio-item">
                 <div class="thumb">
-                  <img src="{% static 'img/about/porfolio-sailand.jpg' %}" loading="lazy"  alt="Ultoxy Technologies">
+                  <img src="{{i.project_long_image.url}}" loading="lazy"  alt="Ultoxy Technologies">
                 </div>
                 <div class="down-content">
                   <h4>Sai Land Developers</h4>
@@ -457,35 +460,9 @@
               </div>
               </a>  
             </div>
-            <div class="item">
-              <a href="#">
-                <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="{% static 'img/about/porfolio-karcher.jpg' %}" loading="lazy"  alt="Ultoxy Technologies">
-                </div>
-                <div class="down-content">
-                  <h4>Karcher</h4>
-                  <span>Website</span>
-                </div>
-              </div>
-              </a>  
-            </div>
-            <div class="item">
-              <a href="#">
-                <div class="portfolio-item">
-                <div class="thumb">
-                  <img src="{% static 'img/about/porfolio-sailand-erp.jpg' %}" loading="lazy"  alt="Ultoxy Technologies">
-                </div>
-                <div class="down-content">
-                  <h4>Sai Land Developers</h4>
-                  <span>ERP/Software</span>
-                </div>
-              </div>
-              </a>  
-            </div>
+            {% endif %}
+          {% endfor %}
              
-              </a>  
-            </div>
           </div>
         </div>
       </div>

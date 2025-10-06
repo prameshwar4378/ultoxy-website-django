@@ -1,9 +1,14 @@
 from django.shortcuts import render,redirect
-from AdminApp.models import BlogPost, ContactInquiry
+from AdminApp.models import BlogPost, ContactInquiry,Projects
 from django.contrib import messages
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    projects=Projects.objects.filter(is_active=True).order_by('-id') 
+    context={
+        "projects":projects,
+    }
+    return render(request, 'index.html',context)
+
 def services(request):
     return render(request, 'services.html')
 def contact_us(request):
@@ -33,9 +38,12 @@ def about_us(request):
         messages.success(request, "Your message has been sent successfully! ✅")
         return redirect("about_us")  # Replace with your urlpattern name
 
+    projects=Projects.objects.filter(is_active=True).order_by('-id') 
+ 
     context = {
         "featured_post": featured_post,
         "other_posts": other_posts,
+        "projects":projects,
     }
     return render(request, "about_us.html", context)
 
