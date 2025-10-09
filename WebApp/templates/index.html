@@ -240,7 +240,7 @@
 
  
   <br><br><br>
-  <section class="team-section py-4 mt-4">
+  <!-- <section class="team-section py-4 mt-4">
     <div class="container">
     <section class="heading-section">
       <h2>Our Team</h2>
@@ -252,8 +252,7 @@
 
 
       <div class="row justify-content-center g-4">
-
-        <!-- Member 1 -->
+ 
         <div class="col-md-6 col-lg-4">
           <div class="team-card">
             <div class="avatar-wrap">
@@ -269,8 +268,7 @@
             </div>
           </div>
         </div>
-
-        <!-- Member 2 -->
+ 
         <div class="col-md-6 col-lg-4">
           <div class="team-card">
             <div class="avatar-wrap">
@@ -289,7 +287,296 @@
 
       </div>
     </div>
-  </section>
+  </section> -->
+
+
+
+
+  <link href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css" rel="stylesheet">
+
+ 
+ <style>
+  /* ---------------------------------------------
+    Testimonials Section with Glassmorphism and Improved Responsiveness
+  --------------------------------------------- */
+
+ 
+  section.testimonials .section-heading {
+    padding-top: 30px;
+    color: #fff;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .testimonials .item {
+    border-radius: 15px;
+    padding: 30px;
+    /* background-color: rgba(29, 198, 245, 0.2); */
+    /* bradiant backgound colour */
+    background: linear-gradient(270deg, #7ae0ff33, #f3b0fc31);
+
+    position: relative;
+    overflow: hidden;
+    margin: 15px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .testimonials .item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .testimonials .item i {
+    width: 70px;
+    height: 70px;
+    background-color: #43ba7f;
+    display: inline-block;
+    text-align: center;
+    line-height: 70px;
+    color: #fff;
+    font-size: 44px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+
+  .testimonials .item p {
+    font-size: 16px;
+    font-style: italic;
+    color: #ffdcdc;
+    font-weight: 100;
+  }
+
+  .testimonials .item h4 {
+    margin-top: 20px;
+    font-size: 22px;
+    font-weight: 100;
+    color: #fff;
+  }
+
+  .testimonials .item span {
+    margin-top: 5px;
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: #43ba7f;
+  }
+
+  .testimonials .item img {
+    border-radius: 5px;
+    width: 100%;
+  }
+
+  .testimonials .owl-dots {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .testimonials .owl-dots .owl-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #43c2f5;
+    border-radius: 50%;
+    margin: 0px 4px;
+  }
+
+  .testimonials .owl-dots .active {
+    background-color: #a558c9;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    section.testimonials {
+      margin-top: 30px;
+      padding: 20px 0;
+    }
+
+    .testimonials .item {
+      padding: 20px;
+      margin: 10px 0;
+    }
+ 
+
+    .testimonials .item h4 {
+      font-size: 20px;
+    }
+
+    .testimonials .item span {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .testimonials .item {
+      padding: 15px;
+    }
+
+    .testimonials .item i {
+      font-size: 36px;
+      width: 60px;
+      height: 60px;
+    }
+
+    .testimonials .item h4 {
+      font-size: 18px;
+    }
+
+    .testimonials .item p {
+      font-size: 14px;
+    }
+ 
+  }
+</style>
+
+<!-- Testimonials Section -->
+<section class="testimonials mt-4" id="testimonials">
+  <div class="container">
+    <section class="heading-section">
+      <h2>Voices That Power Ultoxy</h2>
+      <p>
+            Hear from our valued clients who have experienced the Ultoxy difference. 
+    Their stories reflect our commitment to innovation, quality, and 
+    customer satisfaction — the foundation of every project we deliver.
+      </p>
+      <div class="heading-underline"></div>
+    </section>
+
+    <div class="row"> 
+      <div class="col-lg-10 offset-lg-1">
+        <div class="owl-testimonials-ultoxy owl-carousel" style="position: relative; z-index: 5;">
+          <!-- Testimonial 1 -->
+      <div class="item"> 
+        <div class="row">
+          <div class="col-sm-3 d-flex align-items-center">
+            <center>
+              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Ultoxy" loading="lazy"  style="width: 90%;">
+            </center>                
+          </div>
+          <div class="col-sm-9 mt-3">
+            <i class="bi bi-quote"></i>
+            <p style="font-weight: 500;">“We are extremely satisfied with the ERP software and website developed by Ultoxy Technologies. The team delivered efficient, user-friendly, and highly professional solutions that streamlined our operations and enhanced our online presence. Their dedication, timely support, and attention to detail made the entire experience seamless. Highly recommended!”</p>
+            <h4>Shrikant Ghodekar</h4>
+            <span>CEO, Sai Land Developers</span>
+          </div>
+        </div> 
+      </div>
+
+      <div class="item"> 
+        <div class="row">
+          <div class="col-sm-3 d-flex align-items-center">
+            <center>
+              <img src="{% static 'img/test-smis.jpg' %}" alt="Ultoxy" loading="lazy"  style="width: 90%;">
+            </center>                
+          </div>
+          <div class="col-sm-9 mt-3">
+            <i class="bi bi-quote"></i>
+            <p style="font-weight: 500;">“We are extremely pleased with the dynamic website developed by Ultoxy Technologies. The team created a professional, user-friendly, and engaging platform that effectively represents our school online. Their timely support, creativity, and attention to detail made the entire process smooth and hassle-free. Highly recommended!”</p>
+            <h4>Kalyani Vispute</h4>
+            <span>Principal, Saint Monica International School</span>
+          </div>
+        </div> 
+      </div>
+
+
+
+      <div class="item"> 
+        <div class="row">
+          <div class="col-sm-3 d-flex align-items-center">
+            <center>
+              <img src="{% static 'img/test-patel.png' %}" alt="Ultoxy" loading="lazy"  style="width: 90%;">
+            </center>                
+          </div>
+          <div class="col-sm-9 mt-3">
+            <i class="bi bi-quote"></i>
+            <p style="font-weight: 500;">“We are extremely satisfied with the Transport Management Software developed by Ultoxy Technologies. The team delivered a highly efficient, user-friendly, and reliable platform that streamlined our operations from booking to dispatch and tracking. Their professionalism, timely support, and attention to detail made the development process seamless. Highly recommended!”</p>
+            <h4>Asif Patel</h4>
+            <span>Founder</span>
+          </div>
+        </div> 
+      </div>
+
+
+      <div class="item"> 
+        <div class="row">
+          <div class="col-sm-3 d-flex align-items-center">
+            <center>
+              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Ultoxy" loading="lazy"  style="width: 90%;">
+            </center>                
+          </div>
+          <div class="col-sm-9 mt-3">
+            <i class="bi bi-quote"></i>
+            <p style="font-weight: 500;">“Collaborating with Ultoxy Technologies to develop our dynamic website was an exceptional experience. Their team demonstrated professionalism, creativity, and technical expertise, delivering a platform that truly represents our company's vision. The seamless integration of features and user-friendly design have significantly enhanced our online presence.”</p>
+            <h4>Ganesh Patil</h4>
+            <span>Founder</span>
+          </div>
+        </div> 
+      </div>
+
+
+
+      <div class="item"> 
+        <div class="row">
+          <div class="col-sm-3 d-flex align-items-center">
+            <center>
+              <img src="{% static 'img/test-gya.png' %}" alt="Ultoxy" loading="lazy"  style="width: 90%;">
+            </center>                
+          </div>
+          <div class="col-sm-9 mt-3">
+            <i class="bi bi-quote"></i>
+            <p style="font-weight: 500;">“We are very pleased with the e-commerce and event booking software developed by Ultoxy Technologies. The team delivered a smooth, user-friendly, and efficient platform that makes ticketing and event management effortless for our members. Their professionalism, support, and timely delivery exceeded our expectations.”</p>
+            <h4>GYA Management</h4>
+            <span>Management</span>
+          </div>
+        </div> 
+      </div>
+
+
+        <div class="item"> 
+          <div class="row">
+            <div class="col-sm-3 d-flex align-items-center">
+              <center>
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Ultoxy" loading="lazy" style="width: 90%;">
+              </center>                
+            </div>
+            <div class="col-sm-9 mt-3">
+              <i class="bi bi-quote"></i>
+              <p style="font-weight: 500;">“We are extremely satisfied with the website developed by Ultoxy Technologies in 2021. The team delivered a professional, user-friendly, and visually appealing website that perfectly showcases our services. Their support and timely communication made the entire process smooth and hassle-free. Highly recommended!”</p>
+              <h4>Yogesh Karale</h4>
+              <span>Founder, Saiganga Enterprises</span>
+            </div>
+          </div> 
+        </div>
+
+           
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Owl Carousel JS CDN -->
+  <script src="{% static 'js/owl-carousel.js' %}"></script>
+
+  <!-- Initialize Owl Carousel -->
+  <script>
+    $(document).ready(function(){
+      $(".owl-testimonials-ultoxy").owlCarousel({
+        items: 1,                  // Show 1 item at a time
+        loop: true,                // Infinite loop
+        autoplay: true,            // Enable autoplay
+        autoplayTimeout: 5000,     // Delay between auto slides
+        dots: true,                // Enable dots navigation
+        nav: false,                // Disable next/prev arrows
+        margin: 10                 // Margin between items
+      });
+    });
+  </script>
+
+
 
 
 <br><br><br>
