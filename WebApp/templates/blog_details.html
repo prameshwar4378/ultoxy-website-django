@@ -655,7 +655,7 @@
             <article class="entry entry-single ">
 
               <div class="entry-img">
-                <img src="{{news_details.thumbnail.url}}" alt="" class="img-fluid" style="width: 100%; ">
+                <img src="{{news_details.thumbnail.url}}" alt="" loading="lazy" class="img-fluid" style="width: 100%; ">
               </div>
 
               <h2 class="entry-title">
@@ -692,7 +692,7 @@
                   <div class="">
                     {% if photo.image %}
                     <a class="uk-inline" href="{{photo.image.url}}" data-caption=" ">
-                      <img src="{{photo.image.url}}" width="1800" height="1200" alt="">
+                      <img src="{{photo.image.url}}" width="1800" height="1200" alt="" loading="lazy">
                     </a>
                     {% endif %}
                   </div>
@@ -708,7 +708,7 @@
                 {% for i in video_data %}
                 <div class="col-12 col-sm-3 col-md-fifth mb-4">
                   <div class="card shadow" style="height: 100%; position: relative;">
-                    <img src="{{ i.thumbnail_url }}" class="card-img-top" alt="Video Thumbnail" style="width:100%; height:100%;">
+                    <img src="{{ i.thumbnail_url }}" class="card-img-top" loading="lazy" alt="Video Thumbnail" style="width:100%; height:100%;">
                     <a href="{{ i.video_url }}" target="_blank" class="btn btn-primary play-button">
                       <i class="bi bi-play-fill"></i>
                     </a>
@@ -729,7 +729,8 @@
                 {% for post in latest_news %}
                 <div class="post-item clearfix">
                   {% if post.thumbnail %}
-                  <img src="{{post.thumbnail.url}} " alt="">
+                  <img src="{{post.thumbnail.url}} " alt="" loading="lazy">
+                  {% else %}
                   {% endif %}
                   <h4><a href="{% url "blog_details" post.id %}" style="color: white;">{{post.title}}</a></h4>
                   <time datetime="2020-01-01">{{post.date}}</time>

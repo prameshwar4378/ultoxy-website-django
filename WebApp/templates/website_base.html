@@ -93,10 +93,10 @@
         <div class="col-md-4 footer-links"  style="text-align: left;">
           <h5>Quick Links</h5>
           <ul style="text-align: left;">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'about_us' %}">About Us</a></li>
+            <li><a href="{% url 'services' %}">Services</a></li>
+            <li><a href="{% url 'contact_us' %}">Contact</a></li>
           </ul>
         </div>
         <!-- Contact -->
@@ -119,6 +119,7 @@
       </div>
     </div>
   </footer>
+
 
   <style>
     /* Butter scroll-to-top button */
@@ -154,6 +155,52 @@
   <div class="butter-scroll-top" id="butterScrollTop">
     <span>↑</span>
   </div>
+
+
+  
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        {% for msg in messages %}
+            {% if msg.tags == 'success' %}
+            swal({
+              title: "Good job!",
+              text: "{{msg}}",
+              icon: "success",
+              button: "OK",
+            });
+    
+            {% elif msg.tags == 'error' %}
+            swal({
+              title: "Error",
+              text: "{{msg}}",
+              icon: "error",
+              button: "OK",
+            });
+             
+            {% elif msg.tags == 'warning' %}
+            swal({
+              title: "Warning",
+              text: "{{msg}}",
+              icon: "warning",
+              button: "OK",
+            });
+             
+            {% elif msg.tags == 'info' %}
+            swal({
+              title: "Oops",
+              text: "{{msg}}",
+              icon: "info",
+              button: "OK",
+            });
+             
+            {% endif %}
+        {% endfor %}
+    </script>
+     
+
+
+     
   <script>
     // Butter Scroll To Top animation
     const butterScrollToTopBtn = document.getElementById('butterScrollTop');

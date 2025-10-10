@@ -43,9 +43,10 @@ class BlogPhotosVideos(models.Model):
 
 class ContactInquiry(models.Model):
     name = models.CharField(max_length=150)
-    email = models.EmailField()
+    email = models.EmailField(null=True, blank=True)
     subject = models.CharField(max_length=200, blank=True, null=True)
     message = models.TextField()
+    mobile = models.CharField(max_length=15)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

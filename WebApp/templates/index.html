@@ -18,8 +18,8 @@
           Elevate Everything With Ultoxy
         </div>
         <div class="ultoxy-buttons">
-          <button class="ultoxy-btn" onclick="window.location='#contact'"><span>Contact Us</span></button>
-          <button class="ultoxy-btn" onclick="window.location='#services'"><span>Our Services</span></button>
+          <button class="ultoxy-btn" onclick="window.location={% url 'contact_us' %}"><span>Contact Us</span></button>
+          <button class="ultoxy-btn" onclick="window.location='{% url 'services' %}'"><span>Our Services</span></button>
         </div>
         <!-- Scroll Down Button -->
         <button class="scroll-down-btn" onclick="window.scrollTo({top: window.innerHeight, behavior: 'smooth'});" aria-label="Scroll Down">
@@ -138,17 +138,17 @@
 
  <br><br>
   <!-- ===== Services Section ===== -->
-  <section class="services-section container">
-<section class="heading-section">
-  <h2>Our Services</h2>
-  <p>
-    We offer a comprehensive suite of services designed to elevate your brand, streamline your operations, and drive measurable results. With a focus on quality, innovation, and client success, our expert team delivers tailored solutions across every stage of your business journey.
-  </p>
-  <div class="heading-underline"></div>
-</section>
+  <section class="services-section container" id="services-section">
+      <section class="heading-section">
+        <h2>Our Services</h2>
+        <p>
+          We offer a comprehensive suite of services designed to elevate your brand, streamline your operations, and drive measurable results. With a focus on quality, innovation, and client success, our expert team delivers tailored solutions across every stage of your business journey.
+        </p>
+        <div class="heading-underline"></div>
+      </section>
 
 
-    <div class="row g-4 justify-content-center px-2">
+    <div class="row g-4 justify-content-center px-2 mt-3">
       
       <!-- Website Development -->
       <div class="col-md-6 col-lg-4">
@@ -213,7 +213,7 @@
     </section>
 
 
-    <div class="row g-4" style="padding: 0 15px;">
+    <div class="row g-4 mt-3" style="padding: 0 15px;">
       <!-- Project 1 -->
        {% for i in projects %}
          {% if i.is_active and i.project_image %}

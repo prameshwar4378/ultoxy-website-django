@@ -11,20 +11,51 @@ def index(request):
 
 def services(request):
     return render(request, 'services.html')
+
+
 def contact_us(request):
-    return render(request, 'contact_us.html')
+    # ContactInquiry.objects.all().order_by('-id').delete()  # Clear previous inquiries (for testing purposes)
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        subject = request.POST.get("subject")
+        mobile = request.POST.get("mobile")
+        message = request.POST.get("message")
+
+        if not name or not mobile or not message:
+            messages.error(request, "Please fill all required fields.")
+            return redirect("contact_us")  # Or render the form with error context
+
+        # Save to database
+        ContactInquiry.objects.create(
+            name=name,
+            email=email,
+            subject=subject,
+            mobile=mobile,
+            message=message,
+        )
+
+        messages.success(request, "Your message has been sent successfully! ✅")
+        return redirect("/contact_us")  # Use URL name if set in urls.py
+
+    return render(request, "contact_us.html")
 
 def about_us(request):
     # Blog section logic
     featured_post = BlogPost.objects.order_by('-date').first()
     other_posts = BlogPost.objects.order_by('-date')[1:4]
 
-    # Contact form submission logic
     if request.method == "POST":
         name = request.POST.get("name")
         email = request.POST.get("email")
         subject = request.POST.get("subject")
         message = request.POST.get("message")
+        mobile = request.POST.get("mobile")  # ✅ This was missing
+
+        # Optional: basic validation
+        if not name or not mobile or not message:
+            messages.error(request, "Please fill in all required fields.")
+            return redirect("contact_us")  # Or render form again with error
 
         # Save to database
         ContactInquiry.objects.create(
@@ -32,11 +63,11 @@ def about_us(request):
             email=email,
             subject=subject,
             message=message,
+            mobile=mobile  # ✅ Add this
         )
 
-        # Optional: Add success message
         messages.success(request, "Your message has been sent successfully! ✅")
-        return redirect("about_us")  # Replace with your urlpattern name
+        return redirect("/about_us")  # Or use: return redirect("about_us")
 
     projects=Projects.objects.filter(is_active=True).order_by('-id') 
  
