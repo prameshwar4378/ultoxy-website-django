@@ -498,7 +498,7 @@
               <img src="{{ featured_post.author_image.url }}" loading="lazy"  alt="Ultoxy Tech {{ featured_post.author_name }}">
               By: {{ featured_post.author_name }}
             </span>
-            <div class="border-first-button"><a href="#">Discover More</a></div>
+            <div class="border-first-button"><a href="{% url 'blog_details' featured_post.id %} ">Discover More</a></div>
           </div>
         </div>
       </div>
@@ -510,14 +510,15 @@
           <div class="row">
             {% for post in other_posts %}
             <div class="col-lg-12">
+
               <div class="post-item {% if forloop.last %}last-post-item{% endif %}">
                 <div class="thumb">
-                  <a href="#"><img src="{{ post.thumbnail.url }}" loading="lazy"  alt="Ultoxy Tech {{ post.title }}"></a>
+                  <a href="{% url 'blog_details' post.id %} "><img src="{{ post.thumbnail.url }}" loading="lazy"  alt="Ultoxy Tech {{ post.title }}"></a>
                 </div>
                 <div class="right-content">
                   <span class="category">{{ post.category }}</span>
                   <span class="date">{{ post.date|date:"d M Y" }}</span>
-                  <a href="#"><h4>{{ post.title }}</h4></a>
+                  <a href="{% url 'blog_details' post.id %} "><h4>{{ post.title }}</h4></a>
                   <p>{{ post.description|truncatewords:15 }}</p>
                 </div>
               </div>
