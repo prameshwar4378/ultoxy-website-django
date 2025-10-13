@@ -5,7 +5,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Ultoxy Hero Section</title>
+  <!-- Basic Meta Tags -->
+<meta name="description" content="Altoxy Technologies offers professional website development, software development, data analysis, digital marketing, graphic designing, and Android app development services. Build your digital success with Altoxy.">
+<meta name="keywords" content="Altoxy Technologies, website development, software development, digital marketing, data analysis, graphic designing, Android app development, tech solutions, IT company, business technology services">
+
+<!-- Open Graph (for social sharing) -->
+<meta property="og:title" content="Altoxy Technologies | Innovative Digital & Software Solutions">
+<meta property="og:description" content="Empower your business with Altoxy Technologies — experts in web development, software design, digital marketing, and data analytics.">
+<meta property="og:image" content="https://yourdomain.com/assets/images/og-image.jpg">
+<meta property="og:url" content="https://yourdomain.com/">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Altoxy Technologies | Digital & Software Development Experts">
+<meta name="twitter:description" content="We build high-performing websites, mobile apps, and marketing strategies to grow your business.">
+<meta name="twitter:image" content="https://yourdomain.com/assets/images/twitter-image.jpg">
+
+<!-- Viewport for Mobile Optimization -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Robots -->
+<meta name="robots" content="index, follow">
+
+
+  {% block title %}
+  <title>Altoxy Technologies | Website Development, Software Solutions & Digital Marketing</title>
+  {% endblock title %}
 <link href="{% static "css/templatemo-3d-coverflow.css" %}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
@@ -19,7 +45,7 @@
 <body>
     <nav class="navbar">
     <div class="navbar-logo">
-      <img loading="lazy"  src="{% static "img/logo.png" %}" alt="Logo" loading="lazy" />
+      <img loading="lazy"  src="{% static "img/logo.png" %}" alt="Logo" loading="lazy" alt="Logo | Ultoxy" />
       <span>Ultoxy</span>
     </div>
     <button class="navbar-toggle" id="navbarToggle" aria-label="Open menu">
