@@ -6,21 +6,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <!-- Basic Meta Tags -->
-<meta name="description" content="Altoxy Technologies offers professional website development, software development, data analysis, digital marketing, graphic designing, and Android app development services. Build your digital success with Altoxy.">
-<meta name="keywords" content="Altoxy Technologies, website development, software development, digital marketing, data analysis, graphic designing, Android app development, tech solutions, IT company, business technology services">
+<!-- SEO Meta Tags -->
+<meta name="description" content="Ultoxy Technologies delivers professional website development, software engineering, data analytics, digital marketing, graphic design, and Android app development. Empower your digital growth with Ultoxy." />
+<meta name="keywords" content="Ultoxy Technologies, website development, software engineering, digital marketing, data analytics, graphic design, Android app development, tech solutions, IT company, business technology services" />
 
-<!-- Open Graph (for social sharing) -->
-<meta property="og:title" content="Altoxy Technologies | Innovative Digital & Software Solutions">
-<meta property="og:description" content="Empower your business with Altoxy Technologies — experts in web development, software design, digital marketing, and data analytics.">
-<meta property="og:image" content="https://yourdomain.com/assets/images/og-image.jpg">
-<meta property="og:url" content="https://yourdomain.com/">
-<meta property="og:type" content="website">
+<!-- Open Graph (for Social Sharing) -->
+<meta property="og:title" content="Ultoxy Technologies | Innovative Digital & Software Solutions" />
+<meta property="og:description" content="Elevate your business with Ultoxy Technologies — specialists in web and software development, Android app creation, digital marketing, and advanced analytics. Experience cutting-edge technological solutions tailored for growth." />
+<meta property="og:image" content="https://ultoxy.com/static/img/logo.png" />
+<meta property="og:url" content="https://ultoxy.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Ultoxy Technologies" />
+
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Altoxy Technologies | Digital & Software Development Experts">
 <meta name="twitter:description" content="We build high-performing websites, mobile apps, and marketing strategies to grow your business.">
-<meta name="twitter:image" content="https://yourdomain.com/assets/images/twitter-image.jpg">
+<meta name="twitter:image" content="https://ultoxy.com/static/img/logo.png">
 
 <!-- Viewport for Mobile Optimization -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,10 +47,11 @@
 </head>
 <body>
     <nav class="navbar">
-    <div class="navbar-logo">
-      <img loading="lazy"  src="{% static "img/logo.png" %}" alt="Logo" loading="lazy" alt="Logo | Ultoxy" />
+    <div class="navbar-logo" onclick="window.location='{% url 'index' %}'" style="cursor: pointer;">
+      <img loading="lazy" src="{% static 'img/logo.png' %}" alt="Logo | Ultoxy" />
       <span>Ultoxy</span>
     </div>
+
     <button class="navbar-toggle" id="navbarToggle" aria-label="Open menu">
       <span class="bar"></span>
       <span class="bar"></span>

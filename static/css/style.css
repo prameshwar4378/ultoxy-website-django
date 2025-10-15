@@ -598,12 +598,7 @@ body > * {
 
 
 
-
-
-
-
-
-      /* Enhanced About Us Section Styles */
+  /* Enhanced About Us Section Styles */
   .aboutus-glass-section {
     position: relative;
     min-height: 100vh;
@@ -774,6 +769,7 @@ body > * {
     transform: scale(0.97);
   }
   
+  /* Glass Image → replaced with video */
   .aboutus-glass-image {
     flex: 1 1 340px;
     min-width: 220px;
@@ -787,7 +783,7 @@ body > * {
     z-index: 5;
   }
   
-  .aboutus-img-frame {
+  .aboutus-video-frame {
     position: relative;
     width: 100%;
     border-radius: 1.5rem;
@@ -800,22 +796,23 @@ body > * {
     justify-content: center;
     transform: translateZ(0);
     transition: transform 0.5s, box-shadow 0.5s;
+    aspect-ratio: 9 / 16; /* Keeps vertical video aspect */
   }
   
-  .aboutus-img-frame:hover {
+  .aboutus-video-frame:hover {
     transform: scale(1.03);
     box-shadow: 0 12px 40px rgba(0,255,198,0.9), 0 4px 20px rgba(255,110,199,0.4);
   }
   
-  .aboutus-img-frame img {
+  .aboutus-video-frame video {
     width: 100%;
-    display: block;
-    border-radius: 1.2rem;
+    height: 100%;
     object-fit: cover;
+    border-radius: 1.2rem;
     transition: filter 0.5s;
   }
   
-  .aboutus-img-frame:hover img {
+  .aboutus-video-frame:hover video {
     filter: brightness(1.1) contrast(1.05);
   }
   
@@ -840,7 +837,7 @@ body > * {
     transform: translateY(20px);
     animation: fadeInUp 0.8s 0.8s forwards;
   }
-  
+
   /* Floating Elements */
   .floating-element {
     position: absolute;
@@ -945,10 +942,8 @@ body > * {
     .aboutus-img-caption { font-size: 0.88em; padding: 0.5em 0.5em; }
     .aboutus-glass-content { padding: 1rem 0.2rem; }
     .aboutus-glass-image { padding: 1rem 0.2rem 1.2rem 0.2rem; }
-    .aboutus-img-frame { border-radius: 0.8rem; }
+    .aboutus-video-frame { border-radius: 0.8rem; }
   }
-
-
 
 
 
